@@ -3,11 +3,12 @@ import { FC } from "react";
 import { ArrowsExpandIcon } from "@heroicons/react/outline";
 interface WithExpandIcon {
   label: string;
+  children: JSX.Element;
 }
 
-import NestedModal from "components/modals/NestedModal";
+import NestedModal from "components/ui/modals/NestedModal";
 
-const WithExpandIcon: FC<WithExpandIcon> = ({ label }) => {
+const WithExpandIcon: FC<WithExpandIcon> = ({ label,children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -17,7 +18,9 @@ const WithExpandIcon: FC<WithExpandIcon> = ({ label }) => {
         className="w-4 h-4 text-blue-400 transition-opacity opacity-0 group-hover:opacity-100 "
         onClick={() => setIsOpen(true)}
       />
-      {isOpen && <NestedModal onClose={() => setIsOpen(false)} />}
+      {isOpen && (
+        <NestedModal onClose={() => setIsOpen(false)}>{children}</NestedModal>
+      )}
     </div>
   );
 };

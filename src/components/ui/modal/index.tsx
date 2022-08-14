@@ -20,7 +20,6 @@ const Modal: FC<ModalProps> = ({
     increaseLevel();
   }, []);
 
-  console.log({isOpen})
   return (
     <>
       <Dialog open={isOpen} onClose={onClose} className="fixed inset-0 z-10">

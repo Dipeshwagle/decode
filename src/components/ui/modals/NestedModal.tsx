@@ -1,14 +1,15 @@
 import { useState, useEffect, FC } from "react";
 import { Dialog } from "@headlessui/react";
 import { useModalLevel } from "hooks/useModal";
+import { ExclamationIcon,XIcon } from '@heroicons/react/outline'
 
 interface NestedProps {
   onClose: () => void;
   level?: number;
+  children: JSX.Element;
 }
 
-export const NestedModal: FC<NestedProps> = ({ onClose, level = 0 }) => {
-  let [showChild, setShowChild] = useState(false);
+export const NestedModal: FC<NestedProps> = ({ onClose, children }) => {
 
   const { modalLevel, increaseLevel, decreaseLevel } = useModalLevel();
   const [initialLevel] = useState(modalLevel);
@@ -27,26 +28,21 @@ export const NestedModal: FC<NestedProps> = ({ onClose, level = 0 }) => {
             transform: `translate(calc(5px * ${initialLevel}), calc(5px * ${initialLevel}))`,
           }}
         >
-          <Dialog.Panel className="w-full max-w-md p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
-            <p>Level: {initialLevel}</p>
-            <div className="space-x-4">
+          <Dialog.Panel className="w-full max-w-4xl p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+            <div className="absolute top-0 right-0 hidden pt-4 pr-4 sm:block">
               <button
-                className="px-2 py-1 bg-gray-200 rounded"
-                onClick={() => setShowChild(true)}
+                type="button"
+                className="text-gray-400 bg-white rounded-md hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                onClick={onClose}
               >
-                Open Next
+                <span className="sr-only">Close</span>
+                <XIcon className="w-6 h-6" aria-hidden="true" />
               </button>
             </div>
+            {children}
           </Dialog.Panel>
         </div>
-        {showChild && (
-          <NestedModal
-            onClose={() => {
-              setShowChild(false);
-              decreaseLevel();
-            }}
-          />
-        )}
+      
       </Dialog>
     </>
   );

@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#table tbody:before {
+  /* This doesn't work because of border-collapse */
+  line-height: 1em;
+  content: ".";
+  color: black; /* bacground color */
+  display: block;
+}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useModalLevel } from "hooks/useModal";
-import Modal from "components/modal";
+import Modal from "components/ui/modal";
 
 const Details = () => {
   const [isOpen, setIsOpen] = useState(false);
