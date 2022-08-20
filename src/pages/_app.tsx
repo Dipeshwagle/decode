@@ -4,8 +4,9 @@ import { ModalProvider } from "hooks/useModal";
 import Airtable from "airtable";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-Airtable.configure({ apiKey: process.env.NEXT_PUBLIC_AIRTABLE_API_KEY });
+;
 
+console.log({ key: process.env.NEXT_PUBLIC_AIRTABLE_API_KEY });
 const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {

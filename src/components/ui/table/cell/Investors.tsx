@@ -1,12 +1,12 @@
 import React from "react";
-import useInvestors from "api/hooks/useInvestors";
+import useMultiple from "api/hooks/useMultiple";
 
 const Investors = ({ investors = [] }: { investors: string[] }) => {
-  const { data } = useInvestors(investors);
+  const { data } = useMultiple("Investors", investors);
   return (
     <>
-      {data?.map((result) => {
-        return <span>{result.get("Investor") as string}</span>;
+      {data?.map((result,index) => {
+        return <span key={index}>{result.get("Investor") as string}</span>;
       })}
     </>
   );

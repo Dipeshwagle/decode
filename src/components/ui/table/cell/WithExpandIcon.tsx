@@ -13,7 +13,7 @@ const WithExpandIcon: FC<WithExpandIcon> = ({ label,children }) => {
 
   return (
     <div className="flex items-center gap-2 cursor-pointer group">
-      <span className="group-hover:text-blue-400"> {label}</span>
+      <span className="text-blue-500 group-hover:text-blue-400"> {label}</span>
       <ArrowsExpandIcon
         className="w-4 h-4 text-blue-400 transition-opacity opacity-0 group-hover:opacity-100 "
         onClick={() => setIsOpen(true)}

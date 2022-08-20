@@ -1,7 +1,7 @@
 import { useState, useEffect, FC } from "react";
 import { Dialog } from "@headlessui/react";
 import { useModalLevel } from "hooks/useModal";
-import { ExclamationIcon,XIcon } from '@heroicons/react/outline'
+import { ExclamationIcon, XIcon } from "@heroicons/react/outline";
 
 interface NestedProps {
   onClose: () => void;
@@ -10,7 +10,6 @@ interface NestedProps {
 }
 
 export const NestedModal: FC<NestedProps> = ({ onClose, children }) => {
-
   const { modalLevel, increaseLevel, decreaseLevel } = useModalLevel();
   const [initialLevel] = useState(modalLevel);
 
@@ -28,7 +27,10 @@ export const NestedModal: FC<NestedProps> = ({ onClose, children }) => {
             transform: `translate(calc(5px * ${initialLevel}), calc(5px * ${initialLevel}))`,
           }}
         >
-          <Dialog.Panel className="w-full max-w-4xl p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+          <Dialog.Panel
+            className="w-full max-w-4xl p-6 overflow-y-auto text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl "
+            style={{ maxHeight: "90vh" }}
+          >
             <div className="absolute top-0 right-0 hidden pt-4 pr-4 sm:block">
               <button
                 type="button"
@@ -42,7 +44,6 @@ export const NestedModal: FC<NestedProps> = ({ onClose, children }) => {
             {children}
           </Dialog.Panel>
         </div>
-      
       </Dialog>
     </>
   );

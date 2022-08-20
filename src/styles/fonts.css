@@ -1,0 +1,105 @@
+/* FONTS */
+
+@font-face {
+    font-family: "Helvetica LT Std EC";
+    src: local("Helvetica LT Std Extra Compressed"),
+      local("HelveticaLTStd-ExtraComp"),
+      url("assets/fonts/HelveticaLTStd-ExtraComp.woff2") format("woff2"),
+      url("assets/fonts/HelveticaLTStd-ExtraComp.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: "Helvetica LT Std";
+    src: local("Helvetica LT Std Bold"), local("HelveticaLTStd-Bold"),
+      url("assets/fonts/HelveticaLTStd-Bold.woff2") format("woff2"),
+      url("assets/fonts/HelveticaLTStd-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: "Helvetica LT Std UC";
+    src: local("Helvetica LT Std Ultra Compressed"),
+      local("HelveticaLTStd-UltraComp"),
+      url("assets/fonts/HelveticaLTStd-UltraComp.woff2") format("woff2"),
+      url("assets/fonts/HelveticaLTStd-UltraComp.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: "Helvetica LT Std";
+    src: local("Helvetica LT Std Light"), local("HelveticaLTStd-Light"),
+      url("assets/fonts/HelveticaLTStd-Light.woff2") format("woff2"),
+      url("assets/fonts/HelveticaLTStd-Light.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: "Helvetica LT Std C";
+    src: local("Helvetica LT Std Compressed"), local("HelveticaLTStd-Comp"),
+      url("assets/fonts/HelveticaLTStd-Comp.woff2") format("woff2"),
+      url("assets/fonts/HelveticaLTStd-Comp.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: "Helvetica LT Std";
+    src: local("Helvetica LT Std Black Condensed"),
+      local("HelveticaLTStd-BlkCond"),
+      url("assets/fonts/HelveticaLTStd-BlkCond.woff2") format("woff2"),
+      url("assets/fonts/HelveticaLTStd-BlkCond.woff") format("woff");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: "Space Mono";
+    src: local("Space Mono Bold Italic"), local("SpaceMono-BoldItalic"),
+      url("assets/fonts/SpaceMono-BoldItalic.woff2") format("woff2"),
+      url("assets/fonts/SpaceMono-BoldItalic.woff") format("woff");
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: "Space Mono";
+    src: local("Space Mono Bold"), local("SpaceMono-Bold"),
+      url("assets/fonts/SpaceMono-Bold.woff2") format("woff2"),
+      url("assets/fonts/SpaceMono-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: "Space Mono";
+    src: local("Space Mono Italic"), local("SpaceMono-Italic"),
+      url("assets/fonts/SpaceMono-Italic.woff2") format("woff2"),
+      url("assets/fonts/SpaceMono-Italic.woff") format("woff");
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: "Space Mono";
+    src: local("Space Mono"), local("SpaceMono-Regular"),
+      url("assets/fonts/SpaceMono-Regular.woff2") format("woff2"),
+      url("assets/fonts/SpaceMono-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  

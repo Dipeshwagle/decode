@@ -1,4 +1,5 @@
 export interface Fundraising {
+  id:string,
   "Fundraising Round": string;
   Date: Date;
   Amount: number;
@@ -23,7 +24,7 @@ export interface Fundraising {
   Category: string[];
   Name: string[];
   Investors: string[];
-  Logo: Logo[];
+  'Logo (from Project)': Logo[];
 }
 
 export interface Logo {

@@ -1,9 +1,14 @@
 import React from "react";
-import useInvestorDetail from "api/hooks/useInvestorDetail";
+import useSingle from "api/hooks/useSingle";
+import DynamicList from "components/List/DynamicList";
+import ExpandGeneric from "components/Expand/Generic";
 
-const Investor = ({ investorId }: { investorId: string }) => {
-  const { data } = useInvestorDetail(investorId);
+const Investor = ({ baseName, id }: { baseName: string; id: string }) => {
+
+  const { data } = useSingle(baseName, id);
   const record = data && data[0];
+  console.log({baseName, id,data})
+
   return (
     <div>
       {record && (
@@ -23,6 +28,14 @@ const Investor = ({ investorId }: { investorId: string }) => {
           <div className="flex flex-col">
             <span className="text-2xl ">Year Founded</span>
             <span>{record.get("Year Founded") as string}</span>
+          </div>
+          <div>
+            <DynamicList
+              baseName="Crypto Companies"
+              tilteKey="Company"
+              ids={record.get("Portfolio Companies") as string[]}
+              expandComponent={ExpandGeneric}
+            />
           </div>
         </div>
       )}

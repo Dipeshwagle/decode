@@ -9,13 +9,14 @@ import {
 } from "@tanstack/react-table";
 import WithExpandIcon from "components/ui/table/cell/WithExpandIcon";
 import Investors from "components/ui/table/cell/Investors";
-import Details from "components/modalContent/Details";
+import Generic from "components/Expand/Generic";
 
 const Table = ({ data = [] }: { data?: Fundraising[] }) => {
   const columnHelper = createColumnHelper<Fundraising>();
 
   const columns = [
-    columnHelper.accessor("Logo", {
+    columnHelper.accessor("Logo (from Project)", {
+      header: "Logo",
       cell: (info) => {
         return (
           <div className="flex-shrink-0 w-10 h-10">
@@ -31,10 +32,11 @@ const Table = ({ data = [] }: { data?: Fundraising[] }) => {
     columnHelper.accessor("Company Name (from Project)", {
       cell: (info) => {
         const rowValue = info.row.original;
+
         return (
           <WithExpandIcon
             label={info.getValue().toString()}
-            children={<Details data={rowValue} />}
+            children={<Generic baseName="Fundraising Rounds - Companies" id={rowValue.id} />}
           />
         );
       },
@@ -46,17 +48,17 @@ const Table = ({ data = [] }: { data?: Fundraising[] }) => {
     columnHelper.accessor("Amount", {
       cell: (info) => {
         const rowValue = info.row.original;
+
         return (
           <WithExpandIcon
-            label={info.getValue().toString()}
-            children={<Details data={rowValue} />}
+            label={info.getValue()?.toString()}
+            children={<div />}
           />
         );
       },
     }),
     columnHelper.accessor("Investors", {
       cell: (info) => (
-        
         <div className=" max-w-[200px] max-h-10 overflow-x-auto overflow-y-hidden flex gap-2 flex-nowrap">
           <Investors investors={info.getValue()} />
         </div>

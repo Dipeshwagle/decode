@@ -2,7 +2,7 @@ import type { NextPage, GetStaticProps } from "next";
 import Airtable from "airtable";
 import { Fundraising } from "model/Fundrasing";
 import Table from "components/ui/table";
-import getFundraisingData from "api/hooks/useFundraisingData";
+import getFundraisingData from "api/hooks/useAll";
 
 type PageProps = NextPage & {
   data: Fundraising[];
@@ -15,7 +15,7 @@ const Home = ({ data, ...props }: PageProps) => {
   return (
     <div className="min-h-screen bg-black ">
       <Table
-        data={fundRaisingData?.map((data) => data.fields as unknown as Fundraising)}
+        data={fundRaisingData?.map((data) => ({ ...data.fields as unknown as Fundraising,id:data.getId() }))}
       />
     </div>
   );
