@@ -24,7 +24,7 @@ const mapping: {
       },
       Investors: {
         type: "link",
-        value: "Crypto Companies - Investors",
+        value: "Investors",
       },
       Categories: {
         type: "link",
@@ -41,6 +41,23 @@ const mapping: {
       Project: {
         type: "link",
         value: "Crypto Companies",
+      },
+    },
+  },
+  Investors: {
+    titleKey: "Investor",
+    fields: {
+      "Portfolio Companies": {
+        type: "link",
+        value: "Crypto Companies",
+      },
+      Location: {
+        type: "link",
+        value: "Investors - Locations",
+      },
+      "Fundraising Rounds": {
+        type: "link",
+        value: "Fundraising Rounds - Companies",
       },
     },
   },
@@ -80,7 +97,6 @@ const mapping: {
         type: "link",
         value: "Crypto Companies",
       },
-      
     },
   },
   "Crypto Companies - Categories": {
@@ -125,6 +141,15 @@ const mapping: {
       "Crypto Companies": {
         type: "link",
         value: "Crypto Companies",
+      },
+    },
+  },
+  "Investors - Locations": {
+    titleKey: "Name",
+    fields: {
+      Investors: {
+        type: "link",
+        value: "Investors",
       },
     },
   },

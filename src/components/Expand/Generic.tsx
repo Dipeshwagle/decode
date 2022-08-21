@@ -26,18 +26,13 @@ const Details = ({ baseName, id }: { baseName: string; id: string }) => {
           const baseNameDynamic = mappings[baseName]?.fields[key] || key;
 
           if (!baseNameDynamic) return null;
-          const titleKey = mappings[baseNameDynamic.value]?.titleKey || key;
-
-          console.log({ arrayKey: key, value, baseNameDynamic, titleKey });
 
           if (baseNameDynamic.type === "link") {
-            console.log({ baseName, titleKey, baseNameDynamic });
             return (
               <DynamicList
-                baseName={baseNameDynamic.value}
+                baseName={baseName}
+                itemKey={key}
                 ids={value}
-                label={key}
-                tilteKey={titleKey}
                 expandComponent={Generic}
               />
             );

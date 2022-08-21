@@ -1,6 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import { Fundraising } from "model/Fundrasing";
+import DynamicList from "components/List/DynamicList";
 import {
   createColumnHelper,
   flexRender,
@@ -8,6 +9,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import WithExpandIcon from "components/ui/table/cell/WithExpandIcon";
+import LinkedRecord from "components/ui/table/cell/LinkedRecords";
 import Investors from "components/ui/table/cell/Investors";
 import Generic from "components/Expand/Generic";
 
@@ -29,6 +31,7 @@ const Table = ({ data = [] }: { data?: Fundraising[] }) => {
         );
       },
     }),
+
     columnHelper.accessor("Company Name (from Project)", {
       cell: (info) => {
         const rowValue = info.row.original;
@@ -36,39 +39,92 @@ const Table = ({ data = [] }: { data?: Fundraising[] }) => {
         return (
           <WithExpandIcon
             label={info.getValue().toString()}
-            children={<Generic baseName="Fundraising Rounds - Companies" id={rowValue.id} />}
+            children={
+              <Generic
+                baseName="Fundraising Rounds - Companies"
+                id={rowValue.id}
+              />
+            }
           />
         );
       },
       header: "Company Name",
     }),
+    columnHelper.accessor("Stages", {
+      cell: (info) => {
+        return (
+          <WithExpandIcon
+            labelComponent={
+              <LinkedRecord
+                baseName="Fundraising Rounds - Stages"
+                ids={info.getValue()}
+              />
+            }
+            children={
+              <DynamicList
+                ids={info.getValue()}
+                baseName={"Fundraising Rounds - Companies"}
+                itemKey={"Stages"}
+              />
+            }
+          />
+        );
+      },
+      header: "Stage",
+    }),
     columnHelper.accessor("Date", {
       cell: (info) => info.getValue(),
     }),
     columnHelper.accessor("Amount", {
-      cell: (info) => {
-        const rowValue = info.row.original;
-
-        return (
-          <WithExpandIcon
-            label={info.getValue()?.toString()}
-            children={<div />}
-          />
-        );
-      },
+      cell: (info) => (
+        <WithExpandIcon
+          label={info.getValue()?.toString()}
+          children={<div />}
+        />
+      ),
     }),
     columnHelper.accessor("Investors", {
       cell: (info) => (
-        <div className=" max-w-[200px] max-h-10 overflow-x-auto overflow-y-hidden flex gap-2 flex-nowrap">
-          <Investors investors={info.getValue()} />
-        </div>
+        <WithExpandIcon
+          labelComponent={
+            <LinkedRecord
+              className="max-w-[200px] max-h-10 overflow-x-auto overflow-y-hidden flex gap-2 flex-nowrap"
+              baseName="Investors"
+              ids={info.getValue()}
+            />
+          }
+          children={
+            <DynamicList
+              ids={info.getValue()}
+              baseName={"Fundraising Rounds - Companies"}
+              itemKey={"Investors"}
+            />
+          }
+        />
       ),
     }),
     columnHelper.accessor("Website", {
       cell: (info) => info.getValue(),
     }),
     columnHelper.accessor("Founder", {
-      cell: (info) => info.getValue()?.slice(0, 1),
+      cell: (info) => (
+        <WithExpandIcon
+          labelComponent={
+            <LinkedRecord
+            className="max-w-[200px] max-h-10 overflow-x-auto overflow-y-hidden flex gap-2 flex-nowrap"
+              baseName="Crypto Companies - Founders"
+              ids={info.getValue()}
+            />
+          }
+          children={
+            <DynamicList
+              ids={info.getValue()}
+              baseName={"Fundraising Rounds - Companies"}
+              itemKey={"Founder"}
+            />
+          }
+        />
+      ),
     }),
   ];
 
